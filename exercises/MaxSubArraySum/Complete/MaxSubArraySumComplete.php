@@ -7,6 +7,7 @@ namespace Exercises\MaxSubArraySum\Complete;
 use const INF;
 use function count;
 use function max;
+use function rsort;
 
 final class MaxSubArraySumComplete
 {
@@ -55,5 +56,24 @@ final class MaxSubArraySumComplete
         }
 
         return $maxSum;
+    }
+    
+    /** @param int[] $input */
+    public static function max3(array $input, int $n): int
+    {
+        $length = count($input);
+        if ($n > $length) {
+            return 0;
+        }
+
+        rsort($input);
+
+        $max = 0;
+        for ($i = 0; $i < $n; ++$i)
+        {
+            $max += $input[$i];
+        }
+
+        return $max;
     }
 }
